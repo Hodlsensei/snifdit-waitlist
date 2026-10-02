@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SNIFDIT | One snif is all you need</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#E05504;
+  --green:#057A33;
+  --white:#fff;
+  --ink:#0b0b0b;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%}
+body{
+  min-height:100%;margin:0;background:var(--orange);color:var(--white);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  display:grid;place-items:center;padding:24px 16px;
+}
+.card{
+  width:min(440px,100%);min-height:474px;background:var(--green);
+  border-radius:44px;padding:40px 28px 36px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.logo{display:block;width:min(372px,100%);height:auto}
+.view{display:none;flex:1;width:100%;flex-direction:column;align-items:center}
+.view.active{display:flex;animation:swap .45s ease both}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.pitch{margin:34px 0 0;font-weight:800;font-size:17px;line-height:1.35;letter-spacing:-.01em}
+form{width:min(310px,100%);margin-top:36px;display:flex;flex-direction:column;gap:14px}
+input{
+  width:100%;height:40px;padding:0 18px;border-radius:999px;
+  border:3px solid var(--orange);background:transparent;color:var(--ink);
+  font:500 17px/1 "Archivo",Arial,sans-serif;text-align:center;
+}
+input::placeholder{color:var(--ink);opacity:1;text-transform:uppercase}
+input:focus,input:focus-visible{outline:none}
+button:focus-visible,a:focus-visible{outline:3px solid var(--white);outline-offset:3px}
+input[aria-invalid="true"]{border-color:var(--white)}
+button.join{
+  height:40px;border:0;border-radius:999px;background:var(--orange);color:var(--white);
+  font:800 17px/1 "Archivo",Arial,sans-serif;text-transform:uppercase;cursor:pointer;
+  transition:transform .15s ease;
+}
+button.join:hover{transform:scale(1.02)}
+button.join:active{transform:scale(.98)}
+button.join[disabled]{opacity:.7;cursor:progress;transform:none}
+.error{min-height:18px;margin:-4px 0 0;font-size:14px;font-weight:700}
+
+.follow{margin:auto 0 0;padding-top:84px;font-weight:800;font-size:21px;letter-spacing:-.015em}
+.socials{display:flex;gap:14px;margin-top:10px}
+.socials a{display:grid;place-items:center;width:34px;height:34px;color:var(--white);border-radius:8px}
+.socials svg{width:32px;height:32px;fill:currentColor}
+.soon{margin:auto 0 0;padding-top:84px;font-weight:800;font-size:17px;letter-spacing:-.01em;text-transform:uppercase}
+
+@media (prefers-reduced-motion:reduce){
+  .view.active{animation:none}
+  button.join{transition:none}
+}
+</style>
+</head>
+<body>
+<main class="card">
+  <img class="logo" src="logo.png" width="960" height="276" alt="SNIFDIT - One snif is all you need">
+
+  <section id="view-form" class="view active">
+    <p class="pitch">The first SNIF is almost here...<br>Join the waitlist for early access.</p>
+    <form id="waitlist" novalidate>
+      <input type="text" name="name" placeholder="Name" autocomplete="name" aria-label="Name" required>
+      <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+      <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" aria-label="Phone number" required>
+      <button class="join" type="submit">Join the waitlist</button>
+      <p class="error" id="error" role="alert"></p>
+    </form>
+  </section>
+
+  <section id="view-done" class="view" aria-live="polite">
+    <p class="follow">follow the journey @snifdit</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/snifdit" target="_blank" rel="noopener" aria-label="SNIFDIT on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.4 5.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@snifdit" target="_blank" rel="noopener" aria-label="SNIFDIT on TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.3v13.3a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9a6.2 6.2 0 1 0 5.3 6.1V8.8a7.4 7.4 0 0 0 4.3 1.4V6.9a4.3 4.3 0 0 1-4.3-4.3V2z"/></svg>
+      </a>
+    </div>
+    <p class="soon">Sniffing soon...</p>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
