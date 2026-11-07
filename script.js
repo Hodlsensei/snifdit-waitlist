@@ -1,5 +1,3 @@
-// Set this to your backend/form endpoint (Formspree, Google Apps Script, your own API...).
-// Paste your Google Apps Script web app URL here (ends in /exec). Leave empty to skip sending.
 const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbwOlhq-19mpqtuW5APByYli1UXsZ2oUody5tKK9_yuoF1JWt1D9DPHJmgwRN-p0z2R0rQ/exec";
 
 const form = document.getElementById("waitlist");
@@ -41,10 +39,18 @@ form.addEventListener("submit", async (e) => {
         body: new URLSearchParams({ name: data.name.trim(), email: data.email.trim(), phone: data.phone.trim() })
       });
     }
+    if (window.fbq) fbq('track', 'Lead', { content_name: 'SNIFDIT waitlist' });
     show();
   } catch (err) {
     console.error("Waitlist submit failed:", err);
     errorEl.textContent = "Could not join the waitlist. Check your connection and try again.";
     btn.disabled = false;
   }
+});
+
+// Track clicks on the Instagram / TikTok links as a custom Meta Pixel event
+document.querySelectorAll(".socials a").forEach(a => {
+  a.addEventListener("click", () => {
+    if (window.fbq) fbq("trackCustom", "SocialClick", { platform: a.getAttribute("aria-label") });
+  });
 });
